@@ -25,7 +25,7 @@
  *
  * Notice: 
  *
- * This library will append one line comment to  $config['modules'] section in application/config.php.
+ * This library will append one line comment to  $config['modules'] section in application/config/config.php.
  *
  *
  * Full class signature:
@@ -72,7 +72,7 @@ class Module_Core {
 	 */
 	public function __construct()
 	{
-		$this->filepath = APPPATH.'config/test.php';
+		$this->filepath = APPPATH.'config/config.php';
 		
 		$this->modules_markup();
 		
