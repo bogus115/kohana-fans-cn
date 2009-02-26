@@ -1,6 +1,0 @@
-#labels Phase-Implementation
-#Kohana Libraries
-
-= Introduction =
-
-Here will list all libraries.
