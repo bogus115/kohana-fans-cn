@@ -43,6 +43,12 @@
  * private function write_file($content)
  * private function check_module($name)
  *
+ *
+ * TODO
+ *
+ * 1. vaild files exist before calling add() method.
+ * 2. vaild files exist and if can be write function.
+ *
  */
 class Module_Core {
 	
@@ -159,14 +165,14 @@ class Module_Core {
 			return FALSE;
 			
 		$content = $this->read_file();
-		if ( !preg_match('/\/\/ Modules Markup/i', $content) )
+		if ( !preg_match('/\/\/ Modules Makrup/i', $content) )
 			return FALSE;
 		
 		$desc = empty($desc)?'':'   // '.$desc;
-		$add_module = '// Modules Markup
+		$add_module = '// Modules Makrup
 	MODPATH.\''.$name.'\','.$desc;
 	
-		$new_content = preg_replace('/\/\/ Modules Markup/i', $add_module, $content);
+		$new_content = preg_replace('/\/\/ Modules Makrup/i', $add_module, $content);
 
 		return $this->write_file($new_content);
 	}
@@ -228,12 +234,12 @@ class Module_Core {
 	{
 		$content = $this->read_file();
 		
-		if ( preg_match('/\/\/ Modules Markup/i', $content) )
+		if ( preg_match('/\/\/ Modules Makrup/i', $content) )
 			return FALSE;
 		 
 		$markup ='$config[\'modules\'] = array
 (
-	// Modules Markup
+	// Modules Makrup
 ';
 		$new_content = preg_replace('/\$config\[\'modules\'\] = array\s*\(/i', $markup, $content);
 		
