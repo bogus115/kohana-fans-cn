@@ -159,14 +159,14 @@ class Module_Core {
 			return FALSE;
 			
 		$content = $this->read_file();
-		if ( !preg_match('/\/\/ Modules Makrup/i', $content) )
+		if ( !preg_match('/\/\/ Modules Markup/i', $content) )
 			return FALSE;
 		
 		$desc = empty($desc)?'':'   // '.$desc;
-		$add_module = '// Modules Makrup
+		$add_module = '// Modules Markup
 	MODPATH.\''.$name.'\','.$desc;
 	
-		$new_content = preg_replace('/\/\/ Modules Makrup/i', $add_module, $content);
+		$new_content = preg_replace('/\/\/ Modules Markup/i', $add_module, $content);
 
 		return $this->write_file($new_content);
 	}
@@ -228,12 +228,12 @@ class Module_Core {
 	{
 		$content = $this->read_file();
 		
-		if ( preg_match('/\/\/ Modules Makrup/i', $content) )
+		if ( preg_match('/\/\/ Modules Markup/i', $content) )
 			return FALSE;
 		 
 		$markup ='$config[\'modules\'] = array
 (
-	// Modules Makrup
+	// Modules Markup
 ';
 		$new_content = preg_replace('/\$config\[\'modules\'\] = array\s*\(/i', $markup, $content);
 		
