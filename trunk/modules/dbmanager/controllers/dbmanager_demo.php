@@ -28,10 +28,9 @@ class Dbmanager_Demo_Controller extends Template_Controller {
 		
 		echo $dbmanager->optimize_tables('all');
 		
-		//echo $dbmanager->next_back_time().'<br />';
+		//echo $dbmanager->next_backup_time().'<br />';
 		
 		//echo $dbmanager->backup_db();
-		///echo Kohana::debug($dbmanager->write_time(222222222,'backup'));
 		/*
 		// List tables
 		echo '==================<br />List tables<br />==================';
