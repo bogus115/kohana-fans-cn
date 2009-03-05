@@ -254,7 +254,7 @@ class DBManager_Core {
 	}
 	
 	/**
-	 * Automatic backup dababase of application
+	 * Automatic optimize dababase of application
 	 *
 	 * @param (boolean) $gzip - set TRUE, compress sql file with Gzip. by default, set it FALSE.
 	 * @return void.
@@ -389,7 +389,7 @@ class DBManager_Core {
 	 *
 	 * @return  string content of file.
 	 */
-	public function write_time($time, $type)
+	private function write_time($time, $type)
 	{
 		if ( empty($time) || !is_numeric($time) || empty($type))
 			return FALSE;
