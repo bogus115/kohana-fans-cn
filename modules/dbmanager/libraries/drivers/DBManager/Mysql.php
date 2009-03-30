@@ -215,11 +215,13 @@ class DBManager_Mysql_Driver extends DBManager_Driver {
 		{
 			foreach ( $tables as $table_name )
 			{
-				$table_prefix = substr($table_name, 0, strlen($this->config['table_prefix']));
-				if ( $table_prefix==$this->config['table_prefix'] )
-					$table_name = substr($table_name, strlen($this->config['table_prefix']));
-				//TODO the code could be deleted if Kohana has update above.
-				
+				if ( !version_compare(KOHANA_VERSION, '2.3.2', '>=') )
+				{
+					$table_prefix = substr($table_name, 0, strlen($this->config['table_prefix']));
+					if ( $table_prefix==$this->config['table_prefix'] )
+						$table_name = substr($table_name, strlen($this->config['table_prefix']));
+				}
+
 				if ( !$this->db->table_exists($table_name) )
 					$tables_error .= '`, `<b>'.$table_name.'</b>';
 			}
