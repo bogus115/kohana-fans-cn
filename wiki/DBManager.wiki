@@ -1,14 +1,6 @@
 #summary Database manager. (eg, Database backup, optimize, repair tools)
 #labels Phase-Implementation,Modules
 
-= Introduction =
-
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+|| author || icyleaf||
+|| version || 0.1 ||
+|| status|| write it ||
