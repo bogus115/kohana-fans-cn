@@ -1,5 +1,5 @@
 #summary Extending helpers to friendly url for seo.
-#labels Phase-Implementation,Helper
+#labels Phase-Implementation,Helper,icyleaf
 
 || author || icyleaf||
 || version || 0.1 ||
