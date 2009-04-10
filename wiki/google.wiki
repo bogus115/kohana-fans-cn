@@ -1,5 +1,5 @@
-#summary One-sentence summary of this page.
 #labels Phase-Implementation,Helper
+#Google API, but now only translation.
 
 = Introduction =
 
