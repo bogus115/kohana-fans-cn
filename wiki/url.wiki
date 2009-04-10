@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Extending helpers to friendly url for seo.
 #labels Phase-Implementation,Helper
 
 = Introduction =
