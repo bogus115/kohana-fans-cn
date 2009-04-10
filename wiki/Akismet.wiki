@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Anti SPAM library (Akismet.com)
 #labels Phase-Implementation,Libraries
 
 = Introduction =
