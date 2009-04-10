@@ -1,4 +1,4 @@
-#summary Modules manager
+#summary Modules manager. (add, active, inactive and list modules)
 #labels Phase-Implementation,Libraries
 
 = Introduction =
