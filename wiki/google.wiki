@@ -1,5 +1,5 @@
+#summary Google API, but now only translation.
 #labels Phase-Implementation,Helper
-#Google API, but now only translation.
 
 = Introduction =
 
