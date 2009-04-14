@@ -1,5 +1,5 @@
 #summary Extending system build-in Input library. append ip location funcion.
-#labels Phase-Implementation,Libraries,icyleaf
+#labels Phase-Implementation,Library,icyleaf
 
 || author || icyleaf||
 || version || 1.0 ||
