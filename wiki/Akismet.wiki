@@ -1,5 +1,5 @@
 #summary Anti SPAM library (Akismet.com)
-#labels Phase-Implementation,Libraries,icyleaf
+#labels Phase-Implementation,Library,icyleaf
 
 || author || icyleaf||
 || version || 0.1 ||
