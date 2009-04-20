@@ -1,6 +1,0 @@
-#summary Extending system build-in url helpers. append friendly url for seo function.
-#labels Phase-Implementation,Helper,icyleaf
-
-|| author || icyleaf||
-|| version || 0.1 ||
-|| status|| write it ||
