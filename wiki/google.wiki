@@ -14,8 +14,8 @@
 
 *translate($text, $lang='zh-CN|en')* 利用 Google Translation 把指定的字符串内容进行翻译功能，其有两个参数：
 
-  * [string] $text - 需要翻译的内容
-  * [string] $lang - 用竖线（"|"）把原翻译的内容语言和目标语言的国家代号，默认，'zh-CN|en' = 简体中文翻译为英文。(参考资料：[http://code.google.com/intl/zh-CN/apis/ajaxlanguage/documentation/reference.html 国家代号]）
+  * (string) $text - 需要翻译的内容
+  * (string) $lang - 用竖线（"|"）把原翻译的内容语言和目标语言的国家代号，默认，'zh-CN|en' = 简体中文翻译为英文。(参考资料：[http://code.google.com/intl/zh-CN/apis/ajaxlanguage/documentation/reference.html 国家代号]）
 
 实例：
 {{{
@@ -35,7 +35,7 @@ echo google::translate('Kohana 中文爱好者网站', 'zh_CN|ja');
 
 参数：
 
-  * [string] $string - 需要友好化的内容
+  * (string) $string - 需要友好化的内容
 
 实例：
 {{{
