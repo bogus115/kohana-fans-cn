@@ -122,6 +122,26 @@
  *
  */
 class google_Core {
+
+	/**
+	 * Format url friendly for SEO
+	 *
+	 * @param string $string 
+	 * @return string
+	 */
+	public static function url_friendly( $string )
+	{
+		if ( preg_match('/[\x{2E80}-\x{9FFF}]+/u', $string) )
+			$string = self::translate($string);
+			
+		$string = preg_replace('`\[.*\]`U', '', $string);
+		$string = preg_replace('`&(amp;)?#?[a-z0-9]+;`i', '-', $string);
+		$string = htmlentities($string, ENT_COMPAT, 'utf-8');
+		$string = preg_replace("`&([a-z])(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig|quot|rsquo);`i", "\\1", $string );
+		$string = preg_replace(array('`[^a-z0-9]`i', '`[-]+`'), '-', $string);
+		
+		return strtolower(trim($string, '-'));
+	}
 	
 	/**
 	 * Google translate

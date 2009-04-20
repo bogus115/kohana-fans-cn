@@ -8,7 +8,7 @@
  *
  *
  * function 'ip_location' is convertion from Discuz! forum system, 
- * and file path: 'include/misc.func.php'.
+ * its file path: 'include/misc.func.php'.
  *
  *
  * !!!REQUEST!!!
@@ -22,7 +22,33 @@
  * 3. return result string may be messy code because of qqwry ip data file encode is GB2312.
  */
 class Input extends Input_Core {
-	
+
+	public function format_smiles($string)
+	{
+		$smile_path = url::base().'media/images/smiles/pixel/';
+		$img_style = 'margin: 0pt 0.2ex; vertical-align: middle;';
+		if ( !empty($string) )
+		{
+			$string = str_ireplace(':)', '<img src="'.$smile_path.'smile.gif" style="'.$img_style.'" />', $string);
+			$string = str_ireplace(':-)', '<img src="'.$smile_path.'cool.gif" style="'.$img_style.'" />', $string);
+			$string = str_ireplace(':o', '<img src="'.$smile_path.'scared.gif" style="'.$img_style.'" />', $string);
+			$string = str_ireplace(':-o', '<img src="'.$smile_path.'fright.gif" style="'.$img_style.'" />', $string);
+			$string = str_ireplace(':(', '<img src="'.$smile_path.'frown.gif" style="'.$img_style.'" />', $string);
+			$string = str_ireplace('}:[', '<img src="'.$smile_path.'satan.gif" style="'.$img_style.'" />', $string);
+			$string = str_replace(':D', '<img src="'.$smile_path.'grin.gif" style="'.$img_style.'" />', $string);
+			$string = str_ireplace(':p', '<img src="'.$smile_path.'tongue.gif" style="'.$img_style.'" />', $string);
+			$string = str_ireplace('^_^', '<img src="'.$smile_path.'evilgrin.gif" style="'.$img_style.'" />', $string);
+			$string = str_ireplace('^-^', '<img src="'.$smile_path.'evilgrin.gif" style="'.$img_style.'" />', $string);
+			$string = str_ireplace('>_<', '<img src="'.$smile_path.'surprised.gif" style="'.$img_style.'" />', $string);
+			$string = str_ireplace('T T', '<img src="'.$smile_path.'cry.gif" style="'.$img_style.'" />', $string);
+			$string = str_ireplace('-o-', '<img src="'.$smile_path.'shy.gif" style="'.$img_style.'" />', $string);
+			$string = str_ireplace('- -', '<img src="'.$smile_path.'speechless.gif" style="'.$img_style.'" />', $string);
+			$string = str_ireplace('= =!', '<img src="'.$smile_path.'impatient.gif" style="'.$img_style.'" />', $string);
+			$string = str_ireplace('囧', '<img src="'.$smile_path.'orz.gif" style="'.$img_style.'" />', $string);
+		}
+		return $string;
+	}
+
 	/**
 	 * Find ip location
 	 *
