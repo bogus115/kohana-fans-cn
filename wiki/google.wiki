@@ -1,6 +1,29 @@
-#summary Google API, but now only translation.
+#summary 易用的 Google API，不过目前只有 Google 翻译和 URI 友好化。
 #labels Phase-Implementation,Helper,icyleaf
+
+= Google 辅助函数 =
 
 || author || icyleaf||
 || version || 0.1 ||
-|| status|| write it ||
+
+为了使得 Google API 可以更好的在 Kohana 中的使用，或许这个辅助函数起的名字太大，如果内容太多的且使用辅助函数无法完成，那么只好转换为库类。
+
+== 方法 ==
+
+=== translate()===
+
+*translate($text, $lang='zh-CN|en')* 利用 Google Translation 把指定的字符串内容进行翻译功能，其有两个参数：
+
+  * [string] $text - 需要翻译的内容
+  * [string] $lang - 用竖线（"|"）把原翻译的内容语言和目标语言的缩写，默认，'zh-CN|en' = 简体中文翻译为英文。(参考资料：[http://code.google.com/intl/zh-CN/apis/ajaxlanguage/documentation/reference.html 国家缩写代号]）
+
+实例：
+{{{
+// 默认方法
+// 返回：Kohana Chinese fans site
+echo google::translate('Kohana 中文爱好者网站');
+
+// 自定义翻译：中文转换为日文
+// 返回：Kohana中国のファンサイト
+echo google::translate('Kohana 中文爱好者网站', 'zh_CN|ja');
+}}}
