@@ -124,6 +124,26 @@
 class google_Core {
 
 	/**
+	 * Google translate
+	 * @param string translate text
+	 * @param string source language and target language with '|' emblem
+	 * @param mix
+	 */
+	public static function translate( $text, $lang='zh-CN|en' ) 
+	{
+		if ( empty($text) || !preg_match('/[\w+|-]+\|[\w+|-]+/', $lang) )
+			return NULL;
+			
+		$out = '';
+		$google_translator_url = 'http://google.com/translate_t?langpair='.$lang.'&text='.urlencode($text).'&ie=UTF8';
+		$html = self::getContent($google_translator_url);
+		
+		preg_match('/<div id=result_box dir="ltr">(.*?)<\/div>/', $html, $out);
+	
+		return utf8_encode($out[1]);
+	}
+	
+	/**
 	 * Format url friendly for SEO
 	 *
 	 * @param string $string 
@@ -143,25 +163,6 @@ class google_Core {
 		return strtolower(trim($string, '-'));
 	}
 	
-	/**
-	 * Google translate
-	 * @param string translate text
-	 * @param string source language and target language with '|' emblem
-	 * @param mix
-	 */
-	public static function translate( $text, $lang='zh-CN|en' ) 
-	{
-		if ( empty($text) || !preg_match('/[\w+|-]+\|[\w+|-]+/', $lang) )
-			return NULL;
-			
-		$out = '';
-		$google_translator_url = 'http://google.com/translate_t?langpair='.$lang.'&text='.urlencode($text).'&ie=UTF8';
-		$html = self::getContent($google_translator_url);
-		
-		preg_match('/<div id=result_box dir="ltr">(.*?)<\/div>/', $html, $out);
-	
-		return utf8_encode($out[1]);
-	}
  
 	private static function getContent( $url ) 
 	{
