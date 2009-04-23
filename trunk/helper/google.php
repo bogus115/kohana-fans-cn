@@ -146,7 +146,7 @@ class google_Core {
 	/**
 	 * Format url friendly for SEO
 	 *
-	 * @param string $string 
+	 * @param string string to format
 	 * @return string
 	 */
 	public static function url_friendly( $string )
