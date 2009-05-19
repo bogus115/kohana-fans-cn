@@ -16,12 +16,11 @@ class OAuth_Core {
 	
 	public function __construct($key=null, $secret=null)
 	{
-		$this->key = empty($key)?Kohana::config('douban.key'):$key;
-		$this->secret = empty($secret)?Kohana::config('douban.secret'):$secret;
-		
-		if ( empty($this->key) || empty($this->secret) )
+		if ( empty($key) || empty($secret) )
 			throw new Kohana_User_Exception('Missing parameter(s)', '$key or $secret parameters is empty.');
 	
+		$this->key = $key;
+		$this->secret = $secret;
 		include Kohana::find_file('vender', 'OAuth', true);
 	}
 	
