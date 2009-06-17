@@ -1,10 +1,10 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-
 /**
  * OAuth library
  *
  * @package libraries
  * @author icyleaf
+ * @version 0.3
  * 
  */
 class OAuth_Core {
@@ -117,55 +117,9 @@ class OAuth_Core {
 	 */
 	public function getRequestFromConsumer($consumer=null, $token=null, $method=null, $url=null, $parameters=null)
 	{
-		return OAuthRequest::from_consumer_and_token($consumer, $token, $method, $url, $parameters=null);
+		return OAuthRequest::from_consumer_and_token($consumer, $token, $method, $url, $parameters);
 	}
-	
-	/**
-	 * Call API with a GET request
-	 *
-	 * @param string $key 
-	 * @param string $secret 
-	 * @param string $url 
-	 * @param string $getData 
-	 * @param string $header 
-	 * @param string $headers_only 
-	 * @return void
-	 * @author icyleaf
-	 */
-	public function get($key, $secret, $url, $getData=array(), $header=array(), $headers_only=false)
-	{
-		$accessToken = $this->getOAuthToken($key, $secret);
-		$request = $this->prepareRequest($accessToken, 'GET', $url, $getData);
 		
-		if ( !$header )
-			return $this->doGet($request->to_url(), $header, $headers_only);
-		else
-			return $this->doGet($request->to_url(), null, $headers_only);
-	}
-	
-	/**
-	 * Call API with a POST request
-	 *
-	 * @param string $key 
-	 * @param string $secret 
-	 * @param string $url 
-	 * @param string $postData 
-	 * @param string $header 
-	 * @param string $headers_only 
-	 * @return void
-	 * @author icyleaf
-	 */
-	public function post($key, $secret, $url, $postData = array(), $header=array(), $headers_only=false)
-	{
-		$accessToken = $this->getOAuthToken($key, $secret);
-		$request = $this->prepareRequest($accessToken, 'POST', $url, $postData);
-		
-		if ( !$header )
-			return $this->doPost($request->to_url(), $request->to_postdata(), $header, $headers_only);
-		else
-			return $this->doPost($request->to_url(), $request->to_postdata(), null, $headers_only);
-	}
-	
 	/**
 	 * Create OAuth token
 	 *
@@ -190,6 +144,55 @@ class OAuth_Core {
 	{
 		return new OAuthConsumer($this->key, $this->secret);
 	}
+	
+	/**
+	 * Call API with a GET request
+	 *
+	 * @param string $key 
+	 * @param string $secret 
+	 * @param string $url 
+	 * @param string $getData 
+	 * @param string $header 
+	 * @param string $headers_only 
+	 * @return void
+	 * @author icyleaf
+	 */
+	public function get($key, $secret, $url, $getData=array(), $header=array(), $headers_only=false)
+	{
+		$accessToken = $this->getOAuthToken($key, $secret);
+		$request = $this->prepareRequest($accessToken, 'GET', $url, $getData);
+		$header = array
+		(
+			$request->to_header()
+		);
+		
+		return $this->doGet($request->to_url(), $header, $headers_only);
+	}
+	
+	/**
+	 * Call API with a POST request
+	 *
+	 * @param string $key 
+	 * @param string $secret 
+	 * @param string $url 
+	 * @param string $postData 
+	 * @param string $header 
+	 * @param string $headers_only 
+	 * @return void
+	 * @author icyleaf
+	 */
+	public function post($key, $secret, $url, $data=null, $header=array(), $headers_only=false)
+	{
+		$accessToken = $this->getOAuthToken($key, $secret);
+		$request = $this->prepareRequest($accessToken, 'POST', $url, $header);
+		$header = array
+		(
+			$request->to_header(),
+			'Content-Type: application/atom+xml'
+		);
+
+		return $this->doPost($request->to_url(), $data, $header, $headers_only);
+	}
 
 	/**
 	 * Sending get method to http
@@ -201,10 +204,7 @@ class OAuth_Core {
 	 */
 	private function doGet($url, $header=array(), $headers_only=false)
 	{
-		if ( !$header )
-			return Curl::get($url, $header, $headers_only);
-		else
-			return Curl::get($url, null, $headers_only);
+		return RESTRequest::get($url, $header, $headers_only);
 	}
 	
 	/**
@@ -218,10 +218,7 @@ class OAuth_Core {
 	 */
 	private function doPost($url, $data, $header=array(), $headers_only=false)
 	{
-		if ( !$header )
-			return Curl::post($url, $data, $header, $headers_only);
-		else
-			return Curl::post($url, $data, null, $headers_only);
+		return RESTRequest::post($url, $data, $header, $headers_only);
 	}
 	
 	/**
@@ -232,24 +229,18 @@ class OAuth_Core {
 	 * @param string $headers_only 
 	 * @return string
 	 */
-	private function doRequest($request, $header=array(), $headers_only=false)
+	private function doRequest($request)
 	{
 		if ( $request->get_normalized_http_method()=='POST' )
 		{
-			if ( !$header )
-				$data = $this->doPost($this->url, $request->to_postdata(), $header, $headers_only);
-			else
-				$data =$this->doPost($this->url, $request->to_postdata(), null, $headers_only);
+			$result = $this->doPost($this->url, $request->to_postdata());
 		}
 		else
 		{
-			if ( !$header )
-				$data = $this->doGet($request->to_url(), $header, $headers_only);
-			else
-				$data = $this->doGet($request->to_url(), null, $headers_only);
+			$result = $this->doGet($request->to_url(), $header, $headers_only);
 		}
 		
-		return $data;
+		return $result;
 	}
 	
 	/**
