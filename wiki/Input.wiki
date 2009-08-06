@@ -12,7 +12,7 @@
 
 === ip_location()===
 
-*ip_location($ip='', $isFull=FALSE)* 利用 QQ 纯真 IP 数据库实现 IP 归属地的查询。。其有两个个参数：
+*ip_location($ip='', $isFull=FALSE)* 利用 QQ 纯真 IP 数据库实现 IP 归属地的查询。其有两个个参数：
 
   * (string) 需要查询归属地的 IP 地址
   * (string) 是否适合完全版数据库。完全版是由纯真网站制作，可以从[http://update.cz88.Net/soft/qqwry.rar 官网下载]，精简版的是由Discuz！论坛系统中提取出来的。其区别在于，精简版可以查出 ip 所在的国家和城市；而完全版可以在此之外，检测到使用的宽带接入商或网吧名称。默认使用*精简版*。
@@ -38,3 +38,6 @@ echo $this->input->ip_location('123.117.180.163');
 // 转换 :) 表情
 echo $this->input->format_smiles('hello everyone:)');
 }}}
+
+== 源码(Source) ==
+[http://code.google.com/p/kohana-fans-cn/source/browse/trunk/libraries/MY_Input.php MY_Input Library]
