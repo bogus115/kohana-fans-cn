@@ -4,3 +4,7 @@
 || author || icyleaf||
 || version || 0.1 ||
 || status|| write it ||
+
+== 源码(Source) ==
+
+[http://code.google.com/p/kohana-fans-cn/source/browse/trunk/libraries/OAuth.php OAuth Library]
