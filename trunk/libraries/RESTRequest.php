@@ -29,7 +29,9 @@ class RESTRequest_Core {
 	public function __construct($data = array())
 	{
 		if(!function_exists('curl_init'))
+		{
 			throw new Kohana_User_Exception('A cURL error occurred', 'It appears you do not have cURL installed!');
+		}
 		
 		$config = array(
 			CURLOPT_HEADER => false
@@ -117,7 +119,9 @@ class RESTRequest_Core {
 		
 		//Set any additional headers
 		if( !empty($headers) ) 
+		{
 			$ch->set_opt(CURLOPT_HTTPHEADER, $headers);
+		}
 		
 		$result['content'] = $ch->exec();
 		$result['http_code'] = self::$http_code;
@@ -134,7 +138,7 @@ class RESTRequest_Core {
 	 * @param Bool		flag to return only the headers
 	 * @param Array		Additional curl options to instantiate curl with
 	 */
-	public static function post($url, $data, Array $headers = array(), $headers_only = false, Array $curl_options = array())
+	public static function post($url, $data='', Array $headers = array(), $headers_only = false, Array $curl_options = array())
 	{
 		$ch = RESTRequest::factory($curl_options);
 		
@@ -142,7 +146,9 @@ class RESTRequest_Core {
 		if ( is_array($data) )
 		{
 			foreach( $data as $key => $value )
+			{
 				$request .= $key.'='.$value.'&';
+			}
 		}
 		else
 		{
@@ -150,14 +156,44 @@ class RESTRequest_Core {
 		}
 		
 		$ch->set_opt(CURLOPT_URL, $url)
-		->set_opt(CURLOPT_NOBODY, $headers_only)
 		->set_opt(CURLOPT_RETURNTRANSFER, true)
+		->set_opt(CURLOPT_NOBODY, $headers_only)
 		->set_opt(CURLOPT_POST, true)
 		->set_opt(CURLOPT_POSTFIELDS, $request);
 	  
 		//Set any additional headers
 		if( !empty($headers) ) 
+		{
 			$ch->set_opt(CURLOPT_HTTPHEADER, $headers);
+		}
+		
+		$result['content'] = $ch->exec();
+		$result['http_code'] = self::$http_code;
+		
+		return new RESTResponse($result);
+	}
+	
+	public static function put($value='')
+	{
+		//curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+	}
+	
+	public static function delete($url, Array $headers = array(), $headers_only = false, Array $curl_options = array())
+	{
+		//curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+		
+		$ch = RESTRequest::factory($curl_options);
+		
+		$ch->set_opt(CURLOPT_URL, $url)
+		->set_opt(CURLOPT_RETURNTRANSFER, true)
+		->set_opt(CURLOPT_NOBODY, $headers_only)
+		->set_opt(CURLOPT_CUSTOMREQUEST, 'DELETE');
+		
+		//Set any additional headers
+		if( !empty($headers) ) 
+		{
+			$ch->set_opt(CURLOPT_HTTPHEADER, $headers);
+		}
 		
 		$result['content'] = $ch->exec();
 		$result['http_code'] = self::$http_code;
@@ -183,23 +219,21 @@ class RESTResponse {
 	{
 		$this->content = $response['content'];
 		$this->http_code = $response['http_code'];
-		
-		return $this->content;
 	}
 	
-	public function to_nomral_format()
+	public function to_normal()
 	{
 		return $this->content;
 	}
 	
 	public function to_xml()
 	{
-		return $this->content;
+		return simplexml_load_string($this->content);
 	}
 	
-	public function to_json()
+	public function to_json($assoc=true)
 	{
-		return json_decode($this->content, true);
+		return json_decode($this->content, $assoc);
 	}
 	
 	public function get_http_code()
@@ -210,5 +244,6 @@ class RESTResponse {
 	public function __toString() {
 		return (string) $this->get_http_code();
 	}
+
 }
 ?>

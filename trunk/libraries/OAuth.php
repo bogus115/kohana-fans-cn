@@ -22,7 +22,7 @@ class OAuth_Core {
 	public function __construct($key=null, $secret=null)
 	{
 		// include OAuth classes
-		include Kohana::find_file('vender', 'OAuth', true);
+		include_once Kohana::find_file('vendor', 'OAuth', true);
 		
 		$this->key = $key;
 		$this->secret = $secret;
@@ -154,8 +154,7 @@ class OAuth_Core {
 	 * @param string $getData 
 	 * @param string $header 
 	 * @param string $headers_only 
-	 * @return void
-	 * @author icyleaf
+	 * @return Object
 	 */
 	public function get($key, $secret, $url, $getData=array(), $header=array(), $headers_only=false)
 	{
@@ -165,7 +164,7 @@ class OAuth_Core {
 		(
 			$request->to_header()
 		);
-		
+
 		return $this->doGet($request->to_url(), $header, $headers_only);
 	}
 	
@@ -178,20 +177,28 @@ class OAuth_Core {
 	 * @param string $postData 
 	 * @param string $header 
 	 * @param string $headers_only 
-	 * @return void
-	 * @author icyleaf
+	 * @return Object
 	 */
-	public function post($key, $secret, $url, $data=null, $header=array(), $headers_only=false)
+	public function post($key, $secret, $url, $data=null, $header=null, $headers_only=false)
+	{
+		@$header or $header = array();
+		$accessToken = $this->getOAuthToken($key, $secret);
+		$request = $this->prepareRequest($accessToken, 'POST', $url);
+		$header = array_merge(array($request->to_header()), $header);
+
+		return $this->doPost($url, $data, $header, $headers_only);
+	}
+	
+	public function delete($key, $secret, $url, $headers_only=false)
 	{
 		$accessToken = $this->getOAuthToken($key, $secret);
-		$request = $this->prepareRequest($accessToken, 'POST', $url, $header);
+		$request = $this->prepareRequest($accessToken, 'DELETE', $url);
 		$header = array
 		(
-			$request->to_header(),
-			'Content-Type: application/atom+xml'
+			$request->to_header()
 		);
 
-		return $this->doPost($request->to_url(), $data, $header, $headers_only);
+		return RESTRequest::delete($url, $header, $headers_only);
 	}
 
 	/**
@@ -200,7 +207,7 @@ class OAuth_Core {
 	 * @param string $url 
 	 * @param string $header 
 	 * @param string $headers_only 
-	 * @return string
+	 * @return Object
 	 */
 	private function doGet($url, $header=array(), $headers_only=false)
 	{
@@ -214,9 +221,9 @@ class OAuth_Core {
 	 * @param string $data 
 	 * @param string $header 
 	 * @param string $headers_only 
-	 * @return string
+	 * @return Object
 	 */
-	private function doPost($url, $data, $header=array(), $headers_only=false)
+	private function doPost($url, $data=null, $header=array(), $headers_only=false)
 	{
 		return RESTRequest::post($url, $data, $header, $headers_only);
 	}
@@ -227,7 +234,7 @@ class OAuth_Core {
 	 * @param string $request 
 	 * @param string $header 
 	 * @param string $headers_only 
-	 * @return string
+	 * @return Object
 	 */
 	private function doRequest($request)
 	{
@@ -252,7 +259,7 @@ class OAuth_Core {
 	 * @param string $parameters 
 	 * @return void
 	 */
-	private function prepareRequest($token, $httpMethod, $url, $parameters)
+	private function prepareRequest($token, $httpMethod, $url, $parameters=null)
 	{
 		$consumer = $this->createConsumer();
 		$request = $this->getRequestFromConsumer($consumer, $token, $httpMethod, $url, $parameters);
