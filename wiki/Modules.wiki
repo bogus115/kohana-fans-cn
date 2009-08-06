@@ -36,3 +36,7 @@ $module->add('sample_module', 'Just a sample module');
 不过请注意，此库类需要在 application/config/config.php 中的 $config['modules'] 数组中添加一个注解式的标记已方便此库类的操作。
 
 不放心的朋友可以对 application/config/config.php 进行备份在进行测试使用。
+
+== 源码(Source) ==
+
+[http://code.google.com/p/kohana-fans-cn/source/browse/trunk/libraries/Module.php Module Library]
