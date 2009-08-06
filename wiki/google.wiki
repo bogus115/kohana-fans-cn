@@ -49,5 +49,5 @@ echo google::translate('Guantanamo: le chauffeur de Ben Laden plaide non coupabl
 // 返回：guantanamo-le-chauffeur-de-ben-laden-plaide-non-coupable-a-l- ouverture-de-son-proces
 }}}
 
-== 源码 ==
+== 源码（Source） ==
 [http://code.google.com/p/kohana-fans-cn/source/browse/trunk/helper/google.php google helper]
