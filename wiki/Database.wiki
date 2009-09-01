@@ -11,5 +11,7 @@
 
 == 源码(Source) ==
 
- * libraries/[http://code.google.com/p/kohana-fans-cn/source/browse/trunk/libraries/MY_Database.php MY_Database.php]
- * config/[http://code.google.com/p/kohana-fans-cn/source/browse/trunk/config/database.php database.php]
+Kohana v2.3.x
+
+ * libraries/[http://code.google.com/p/kohana-fans-cn/source/browse/trunk/2.3.x/libraries/MY_Database.php MY_Database.php]
+ * config/[http://code.google.com/p/kohana-fans-cn/source/browse/trunk/2.3.x/config/database.php database.php]
