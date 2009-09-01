@@ -7,4 +7,6 @@
 
 == 源码(Source) ==
 
-[http://code.google.com/p/kohana-fans-cn/source/browse/trunk/libraries/OAuth.php OAuth Library]
+Kohana v2.3.x
+
+[http://code.google.com/p/kohana-fans-cn/source/browse/trunk/2.3.x/libraries/OAuth.php OAuth Library]
