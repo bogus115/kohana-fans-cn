@@ -1,4 +1,4 @@
-#summary 易用的 Google API，不过目前只有 Google 翻译和 URI 友好化。
+#summary 颜色之间的转换和随机颜色的生成
 #labels Phase-Implementation,Helper,icyleaf
 
 = Color 辅助函数 =
