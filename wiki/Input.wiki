@@ -40,4 +40,6 @@ echo $this->input->format_smiles('hello everyone:)');
 }}}
 
 == 源码(Source) ==
-[http://code.google.com/p/kohana-fans-cn/source/browse/trunk/libraries/MY_Input.php MY_Input Library]
+
+=== Kohana 2.3.x ===
+[http://code.google.com/p/kohana-fans-cn/source/browse/trunk/2.3.x/libraries/MY_Input.php MY_Input Library]
