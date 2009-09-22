@@ -1,5 +1,5 @@
 #summary OAuth library
-#labels Library,icyleaf
+#labels Phase-Implementation,Library,icyleaf,2.3.x
 
 || author || icyleaf||
 || version || 0.1 ||
