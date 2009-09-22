@@ -1,5 +1,5 @@
 #summary 扩展系统内建的 Input 库类
-#labels Phase-Implementation,Library,icyleaf
+#labels Phase-Implementation,Library,icyleaf,2.3.x
 
 = 扩展系统内建的 Input 库 =
 
