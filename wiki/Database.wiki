@@ -1,5 +1,5 @@
 #summary 扩展系统内建的 Database 库，增加数据库多配置
-#labels Phase-Implementation,Library,icyleaf
+#labels Phase-Implementation,Library,icyleaf,2.3.x
 
 
 = 扩展系统内建的 Database 库 =
