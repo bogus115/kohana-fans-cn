@@ -26,3 +26,7 @@ DBManager Module 灵感来自 WordPress 插件 WP_DBManager，就连名字都很
 Kohana v2.3.x
 
 [http://code.google.com/p/kohana-fans-cn/source/browse/trunk/2.3.x/modules/dbmanager/ DBManager Module]
+
+Kohana v3.0
+
+[http://code.google.com/p/kohana-fans-cn/source/browse/trunk/3.0/modules/dbmanager/ DBManager Module]
