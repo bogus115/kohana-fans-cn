@@ -1,5 +1,5 @@
 #summary Database manager. (eg, Database backup, optimize, repair tools)
-#labels Phase-Implementation,Module,icyleaf
+#labels Phase-Implementation,Module,icyleaf,2.3.x,3.0
 
 || author || icyleaf||
 || version || 0.1 ||
