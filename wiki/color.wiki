@@ -1,5 +1,5 @@
 #summary 颜色之间的转换和随机颜色的生成
-#labels Phase-Implementation,Helper,icyleaf
+#labels Phase-Implementation,Helper,icyleaf,2.3.x,3.0
 
 = Color 辅助函数 =
 
