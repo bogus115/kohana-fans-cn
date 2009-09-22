@@ -1,5 +1,5 @@
 #summary Kohana 项目模板 For NetBeans 6.5+
-#labels Phase-Implementation,Tools,icyleaf
+#labels Phase-Implementation,Tools,icyleaf,2.3.x
 
 || author || icyleaf||
 || version || 0.1 ||
