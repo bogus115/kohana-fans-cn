@@ -1,5 +1,5 @@
 #summary Modules manager. (add, active, inactive and list modules)
-#labels Phase-Implementation,Library,icyleaf
+#labels Phase-Implementation,Library,icyleaf,2.3.x
 
 || author || icyleaf||
 || version || 0.1 ||
