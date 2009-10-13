@@ -174,7 +174,7 @@ class Logger {
 				{
 					$list[$match[1]] = array
 					(
-						'file' 			=> $item,
+						'file' 			=> substr($item, strlen(DOCROOT)),
 						'created_date'	=> filectime($item),
 						'modify_date'	=> filemtime($item),
 					);
