@@ -1,0 +1,15 @@
+#summary Kohana 日志分析工具
+#labels 3.0,Library,icyleaf
+
+
+= Logger 库 =
+
+|| author || icyleaf||
+|| version || 0.1 ||
+
+
+== 源码(Source) ==
+
+Kohana v3.0
+
+ * libraries/[http://code.google.com/p/kohana-fans-cn/source/browse/trunk/3.0/libraries/logger.php logger.php]
