@@ -7,7 +7,7 @@
 || author || icyleaf||
 || version || 0.1 ||
 
-Logger 库提供获取 Kohana 系统指定 log 目录的日志文件已经查看某个 YYYY-MM-DD 的日志详情。
+Logger 库提供获取 Kohana 系统指定 log 目录的日志文件以及查看某个 YYYY-MM-DD 的日志详情。
 
 == 概述 ==
 
