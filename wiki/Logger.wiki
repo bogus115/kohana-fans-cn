@@ -9,7 +9,7 @@
 
 Logger 库提供获取 Kohana 系统指定 log 目录的日志文件以及查看某个 YYYY-MM-DD 的日志详情。
 
-== 概述 ==
+== 概述（Overview） ==
 
 首先是实例化 Logger 类，
 
@@ -21,7 +21,7 @@ $logger = Logger::instance();
 logger = Logger::instance(APPPATH.'app1/logs');
 }}}
 
-== 属性 ==
+== 属性（Property） ==
 
 === path ===
 
@@ -32,7 +32,7 @@ logger = Logger::instance(APPPATH.'app1/logs');
 $logger->path = APPPATH.'app1/logs';
 }}}
 
-== 方法 ==
+== 方法（Method） ==
 
 === get_logs() ===
 
