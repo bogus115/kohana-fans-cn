@@ -66,17 +66,17 @@ array(2) (
     2009 => array(1) (
         10 => array(3) (
             10 => array(3) (
-                "file" => string(45) "E:\PHP\cactus\application\logs/2009/10/10.php"
+                "file" => string(45) "logs/2009/10/10.php"
                 "created_date" => integer 1255146704
                 "modify_date" => integer 1255164921
             )
             12 => array(3) (
-                "file" => string(45) "E:\PHP\cactus\application\logs/2009/10/12.php"
+                "file" => string(45) "logs/2009/10/12.php"
                 "created_date" => integer 1255323052
                 "modify_date" => integer 1255344031
             )
             13 => array(3) (
-                "file" => string(45) "E:\PHP\cactus\application\logs/2009/10/13.php"
+                "file" => string(45) "logs/2009/10/13.php"
                 "created_date" => integer 1255397764
                 "modify_date" => integer 1255397764
             )
