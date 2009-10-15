@@ -1,64 +1,67 @@
-#summary Kohana 日志分析工具
+#summary Kohana Log Viewr
 #labels 3.0,Library,icyleaf
 
 
-= Logger 库 =
+= Logger Library =
 
 || author || icyleaf||
 || version || 0.1 ||
 
-Logger 库提供获取 Kohana 系统指定 log 目录的日志文件以及查看某个 YYYY-MM-DD 的日志详情。
+the Logger library is useful for two things:
 
-== 概述（Overview） ==
+ # List all log files form specified directory
+ # View complated infomations for one log file
+ 
+== Overview ==
 
-首先是实例化 Logger 类，
+To load the Logger library, add the following code to your controller constructor, or to a particular controller method:
 
 {{{
-// 默认初始化，日志路径使用 APPPATH.'logs'。
+// Instance ,default log directory is - APPPATH.'logs'。
 $logger = Logger::instance();
 
-// 自定义日志路径，比如在 APPPATH.'app1/logs'
+// Custom log directory - APPPATH.'app1/logs'
 logger = Logger::instance(APPPATH.'app1/logs');
 }}}
 
-== 属性（Property） ==
+== Property ==
 
 === path ===
 
-动态设置日志路径。
+Dynamic setting log directory.
 
 {{{
-// 实例化 Logger 后，可以使用下面方法修改日志路径： APPPATH.'app1/logs'
+// After instance logger library, then setting this directory to log directory - APPPATH.'app1/logs'
 $logger->path = APPPATH.'app1/logs';
 }}}
 
-== 方法（Method） ==
+== Method ==
 
 === get_logs() ===
 
-get_logs($year=NULL, $month=NULL, $day=NULL) 以数组的形式返回指定日志目录下的所有日志文件，其中包含三个参数：
+get_logs($year=NULL, $month=NULL, $day=NULL) accepts multiple parameters. get all log files returns it as an array. It has three parameters to specified log directory：
 
-  * (int) $year  - 指定查询的年份
-  * (int) $month - 指定查询的月份
-  * (int) $day   - 指定查询的天数
-  * (array) 返回数组形式的结果，如果没有日志文件返回 NULL
+  * (int) $year  - year to query
+  * (int) $month - month to query
+  * (int) $day   - day to query
+  * return result as an (array), if not found file(s) return NULL
 
-实例：
+Example：
 {{{
-// 返回日志目录所有的日志文件
+// return all log files
 $log_files = $logger->get_logs();
-// 调试输出结果
+// Output for debug
 echo Kohana::debug($log_files);
 
-// 自定义日期查询，比如查询包含 2009 年 10 月的日志文件
+// cutsom query by date, i.e, query log files in October 2009
 $log_2009_10_files = $logger->get_logs(2009, 10);
-// 调试输出结果
+// Output for debug
 echo Kohana::debug($log_files);
 }}}
 
-返回结果：
+Result：
 {{{
-// 返回 $logger->get_logs() 的结果
+// return result by calling $logger->get_logs()
 array(2) (
     2009 => array(1) (
         10 => array(3) (
@@ -84,19 +87,18 @@ array(2) (
 
 === get_log() ===
 
-类似于上面的 get_logs() 方法，只不过是返回单个日志文件的详情。同样有上面的三个参数。
+Similar get_logs() above, accepts multiple parameters. but return complated log informations.。
 
-实例：
+Example：
 {{{
-// 显示 2009 年 10 月 12 日的日志信息
+// Get log file on 10/12/2009
 $log_content = $logger->get_log(2009, 10, 12);
-// 调试输出结果
+// output for debug
 echo Kohana::debug($log_content);
 }}}
 
-返回结果：
+Result：
 {{{
-// 返回的日志内容类似下面的形式
 array(4) (
     0 => array(3) (
         "date" => integer 1255323052
@@ -122,7 +124,7 @@ array(4) (
 }}}
 
 
-== 源码(Source) ==
+== Source ==
 
 Kohana v3.0
 
