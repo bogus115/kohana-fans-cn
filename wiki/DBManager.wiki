@@ -9,6 +9,7 @@ DBManager Module 灵感来自 WordPress 插件 WP_DBManager，就连名字都很
 
 目前对于此扩展实现的功能如下：
 
+ # 仅支持 Mysql 数据库
  # 获得当前 Mysql 版本以及 Kohana 连接数据库等信息
  # 获取当前所有表数据
  # 备份数据库（支持Gzip压缩和自动备份）
